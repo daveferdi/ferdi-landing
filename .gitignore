@@ -1,0 +1,37 @@
+# dependencies
+/node_modules
+
+# next.js build output
+/.next
+/out
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# local env files
+.env
+.env.*
+!.env.example
+
+# typescript cache
+*.tsbuildinfo
+
+# local assistant artifacts
+/.codex
+/.claude
+.codex-dev.log
+.codex-dev.err.log
+.codex-current-home.png
+.current-state.png
+.diag-*.png
+.global-bg-check*.png
+.healthcheck-*.png
+.hero-refine-*.png
+review-*.png
+tmp-*.png
+dev-server.log
+local-start.log

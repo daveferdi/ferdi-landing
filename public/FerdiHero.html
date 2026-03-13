@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FERDI — שליטה בעסק, דרך הבנה</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:      '#0B1A2C',
+            'navy-dk': '#08121F',
+            teal:      '#0D6E8A',
+            'teal-dk': '#0A5870',
+            ink:       '#5C6B82',
+          },
+          fontFamily: {
+            sora:  ['"Sora"', 'sans-serif'],
+            heebo: ['"Heebo"', 'sans-serif'],
+          },
+          letterSpacing: {
+            brand: '.16em',
+            wide4: '.04em',
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Heebo', sans-serif; background: #F7F8FA; color: #0B1A2C; }
+
+    /* Fine dot grid — card background only */
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(11,26,44,.115) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Hairline rule colour */
+    .rule { border-color: rgba(11,26,44,.09); }
+
+    /* Blink for status dot */
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50%      { opacity: .28; }
+    }
+    .blink { animation: blink 2.8s ease-in-out infinite; }
+
+    /* Hover transitions */
+    .btn-nav { transition: color .15s; }
+    .btn-nav:hover { color: #0B1A2C; }
+
+    .btn-primary {
+      background: #0B1A2C;
+      transition: background .15s;
+    }
+    .btn-primary:hover { background: #08121F; }
+
+    .btn-outline {
+      border: 1px solid rgba(11,26,44,.2);
+      transition: border-color .15s, background .15s;
+    }
+    .btn-outline:hover {
+      border-color: rgba(11,26,44,.45);
+      background: rgba(11,26,44,.03);
+    }
+
+    /* Focus ring */
+    a:focus-visible {
+      outline: 2px solid #0D6E8A;
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════════════ -->
+<header class="w-full bg-[#F7F8FA] border-b rule">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 h-[68px] flex items-center justify-between gap-6">
+
+    <!-- ── Wordmark (logical start = visual right in RTL) ── -->
+    <a href="#" class="flex items-center gap-3 flex-shrink-0" aria-label="FERDI — דף הבית">
+      <span class="font-sora font-bold text-[21px] tracking-brand text-navy uppercase">
+        FERDI
+      </span>
+      <span class="hidden sm:block w-px h-[18px] bg-[rgba(11,26,44,.12)]" aria-hidden="true"></span>
+      <span class="hidden sm:block font-sora text-[9px] tracking-[.2em] text-ink/50 uppercase font-medium">
+        Operational Intelligence
+      </span>
+    </a>
+
+    <!-- ── Nav (center) ── -->
+    <nav class="hidden lg:flex items-center gap-8" aria-label="ניווט ראשי">
+      <a href="#" class="btn-nav font-sora text-[12px] font-medium text-ink tracking-wide4">What we do</a>
+      <a href="#" class="btn-nav font-sora text-[12px] font-medium text-ink tracking-wide4">Systems</a>
+      <a href="#" class="btn-nav font-sora text-[12px] font-medium text-ink tracking-wide4">Proof</a>
+      <a href="#" class="btn-nav font-sora text-[12px] font-medium text-ink tracking-wide4">About</a>
+    </nav>
+
+    <!-- ── CTA + Mobile toggle (logical end = visual left in RTL) ── -->
+    <div class="flex items-center gap-3 flex-shrink-0">
+      <a href="#"
+        class="btn-primary hidden sm:inline-flex items-center gap-2 px-5 py-[10px] text-white text-[12px] font-semibold tracking-[.025em]">
+        קבע בדיקת עומק
+        <span class="text-white/40 font-normal text-[11px]">(20 דק׳)</span>
+      </a>
+      <button class="lg:hidden p-2 -ml-1 flex flex-col gap-[5px]" aria-label="פתח תפריט">
+        <span class="block w-5 h-[1.5px] bg-navy"></span>
+        <span class="block w-5 h-[1.5px] bg-navy"></span>
+        <span class="block w-[13px] h-[1.5px] bg-navy ms-auto"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════ -->
+<main>
+  <section
+    class="max-w-7xl mx-auto px-6 md:px-10 pt-20 pb-28 md:pt-28 md:pb-36"
+    aria-labelledby="hero-heading"
+  >
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 xl:gap-28 items-center">
+
+      <!-- ════════════════════════════════
+           TEXT COLUMN
+           (first child = visual RIGHT in RTL)
+      ════════════════════════════════ -->
+      <div class="space-y-9">
+
+        <!-- Eyebrow -->
+        <div class="flex items-center gap-3">
+          <span class="block w-7 h-px bg-teal flex-shrink-0" aria-hidden="true"></span>
+          <p class="font-sora text-[10px] tracking-[.22em] text-teal font-semibold uppercase">
+            תשתית תפעולית
+          </p>
+        </div>
+
+        <!-- H1 -->
+        <h1
+          id="hero-heading"
+          class="font-sora font-bold leading-[1.1] tracking-[-0.028em] text-navy"
+          style="font-size: clamp(2.5rem, 4.6vw, 3.9rem);"
+        >
+          שליטה בעסק,
+          <br>
+          <span class="font-light" style="color: rgba(11,26,44,.65);">דרך הבנה.</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-[16.5px] leading-[1.88] text-ink max-w-[500px]">
+          FERDI בונה תשתית תפעולית מדויקת שממפה תהליכים, מצמצמת טעויות אנוש,
+          ומחזירה לך שליטה —
+          <span class="font-semibold" style="color: rgba(11,26,44,.82);">בלי רעש ובלי הייפ.</span>
+        </p>
+
+        <!-- 3 Bullets -->
+        <ul class="space-y-[14px]" role="list">
+          <li class="flex items-center gap-4">
+            <span class="flex-shrink-0 w-[5px] h-[5px] bg-teal" aria-hidden="true"></span>
+            <span class="text-[14.5px] font-medium" style="color: rgba(11,26,44,.78);">
+              מיפוי תהליכים מקצה לקצה
+            </span>
+          </li>
+          <li class="flex items-center gap-4">
+            <span class="flex-shrink-0 w-[5px] h-[5px] bg-teal" aria-hidden="true"></span>
+            <span class="text-[14.5px] font-medium" style="color: rgba(11,26,44,.78);">
+              סטנדרט שמחזיק ביצועים
+            </span>
+          </li>
+          <li class="flex items-center gap-4">
+            <span class="flex-shrink-0 w-[5px] h-[5px] bg-teal" aria-hidden="true"></span>
+            <span class="text-[14.5px] font-medium" style="color: rgba(11,26,44,.78);">
+              דשבורד שליטה ושקיפות
+            </span>
+          </li>
+        </ul>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+          <a href="#"
+            class="btn-primary inline-flex items-center justify-center px-7 py-[14px] text-white text-[13px] font-semibold tracking-[.025em]">
+            קבע בדיקת עומק (20 דק׳)
+          </a>
+          <a href="#"
+            class="btn-outline inline-flex items-center justify-center px-7 py-[13px] text-navy text-[13px] font-medium tracking-[.02em]">
+            ראה איך זה עובד
+          </a>
+        </div>
+
+      </div>
+
+
+      <!-- ════════════════════════════════
+           VISUAL COLUMN
+           (second child = visual LEFT in RTL)
+      ════════════════════════════════ -->
+      <div class="flex justify-center lg:justify-start">
+        <div class="relative w-full max-w-[420px]">
+
+          <!-- ── Live badge (sits outside card, top-left) ── -->
+          <div
+            class="absolute z-10 flex items-center gap-[7px] bg-[#F7F8FA] border rule px-3 py-[7px]"
+            style="top: -14px; left: -14px; box-shadow: 0 1px 8px rgba(11,26,44,.07);"
+            aria-label="מערכת פעילה"
+          >
+            <span class="w-[7px] h-[7px] bg-teal rounded-full flex-shrink-0 blink" aria-hidden="true"></span>
+            <span class="font-sora text-[9px] tracking-[.2em] uppercase font-semibold"
+              style="color: rgba(11,26,44,.42);">Live</span>
+          </div>
+
+          <!-- ── Main card ── -->
+          <div
+            class="bg-white border rule relative overflow-hidden"
+            style="box-shadow: 0 4px 40px rgba(11,26,44,.07), 0 1px 4px rgba(11,26,44,.05);"
+          >
+            <!-- Dot grid background -->
+            <div class="absolute inset-0 dot-grid" aria-hidden="true"></div>
+
+            <div class="relative">
+
+              <!-- Card header -->
+              <div class="flex items-center justify-between px-7 py-[22px] border-b rule">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-[7px] h-[7px] bg-teal flex-shrink-0" aria-hidden="true"></span>
+                  <span class="font-sora text-[9px] tracking-[.22em] uppercase font-semibold"
+                    style="color: rgba(92,107,130,.5);">System Architecture</span>
+                </div>
+                <span class="font-sora text-[10px] tracking-[.26em] font-bold uppercase"
+                  style="color: rgba(11,26,44,.14);">FERDI</span>
+              </div>
+
+              <!-- Process layers -->
+              <div class="px-7 py-8 space-y-7">
+
+                <!-- Layer 01 -->
+                <div class="space-y-[10px]">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <span class="font-sora text-[9px] tracking-[.18em] font-semibold"
+                        style="color: rgba(11,26,44,.2);">01</span>
+                      <span class="text-[12.5px] font-semibold tracking-[.015em]"
+                        style="color: rgba(11,26,44,.7);">מיפוי תהליכים</span>
+                    </div>
+                    <span class="font-sora text-[9px] font-bold text-teal tracking-[.08em]">מופעל</span>
+                  </div>
+                  <div class="h-[2.5px] w-full" style="background: rgba(11,26,44,.06);">
+                    <div class="h-full bg-teal" style="width: 82%;"></div>
+                  </div>
+                </div>
+
+                <!-- Layer 02 -->
+                <div class="space-y-[10px]">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <span class="font-sora text-[9px] tracking-[.18em] font-semibold"
+                        style="color: rgba(11,26,44,.2);">02</span>
+                      <span class="text-[12.5px] font-semibold tracking-[.015em]"
+                        style="color: rgba(11,26,44,.7);">סטנדרטיזציה</span>
+                    </div>
+                    <span class="font-sora text-[9px] font-bold text-teal tracking-[.08em]">מופעל</span>
+                  </div>
+                  <div class="h-[2.5px] w-full" style="background: rgba(11,26,44,.06);">
+                    <div class="h-full bg-teal" style="width: 65%;"></div>
+                  </div>
+                </div>
+
+                <!-- Layer 03 -->
+                <div class="space-y-[10px]">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <span class="font-sora text-[9px] tracking-[.18em] font-semibold"
+                        style="color: rgba(11,26,44,.2);">03</span>
+                      <span class="text-[12.5px] font-semibold tracking-[.015em]"
+                        style="color: rgba(11,26,44,.45);">דשבורד שליטה</span>
+                    </div>
+                    <span class="font-sora text-[9px] font-medium tracking-[.06em]"
+                      style="color: rgba(11,26,44,.28);">בניה</span>
+                  </div>
+                  <div class="h-[2.5px] w-full" style="background: rgba(11,26,44,.06);">
+                    <div class="h-full" style="width: 40%; background: rgba(11,26,44,.18);"></div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Card footer -->
+              <div class="flex items-center justify-between px-7 py-4 border-t rule">
+                <div class="flex items-center gap-2">
+                  <span class="w-[6px] h-[6px] bg-teal rounded-full flex-shrink-0 blink" aria-hidden="true"></span>
+                  <span class="font-sora text-[9px] tracking-[.16em] uppercase"
+                    style="color: rgba(11,26,44,.32);">תשתית פעילה</span>
+                </div>
+                <div class="flex items-baseline gap-1.5">
+                  <span class="font-sora text-[9px] tracking-[.06em]"
+                    style="color: rgba(11,26,44,.22);">Depth Score</span>
+                  <span class="font-sora text-[15px] font-bold text-teal leading-none">93</span>
+                  <span class="font-sora text-[9px]" style="color: rgba(11,26,44,.18);">/ 100</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- /Main card -->
+
+          <!-- ── Brand tag (bottom-right, floats over card edge) ── -->
+          <div
+            class="absolute bg-navy px-4 py-[9px]"
+            style="bottom: -14px; right: -14px; box-shadow: 0 4px 20px rgba(11,26,44,.2);"
+            aria-hidden="true"
+          >
+            <span class="font-heebo text-[10.5px] tracking-[.1em]"
+              style="color: rgba(255,255,255,.5);">שליטה דרך הבנה</span>
+          </div>
+
+          <!-- ── Teal accent line (left edge of container) ── -->
+          <div
+            class="absolute top-10 bottom-10"
+            style="left: -1px; width: 1px; background: rgba(13,110,138,.22);"
+            aria-hidden="true"
+          ></div>
+
+        </div>
+      </div>
+      <!-- /Visual column -->
+
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
