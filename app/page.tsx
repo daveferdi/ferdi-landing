@@ -1,276 +1,207 @@
-'use client'
-
-import { useState } from 'react'
-import { ArrowLeft, Check, Copy, ExternalLink, Github, Rocket, Settings2, ShieldCheck } from 'lucide-react'
-import Hero from './Hero'
+import Image from 'next/image'
+import styles from './page.module.css'
 
 type ValueCard = {
+  label: string
   title: string
   description: string
-  bullets: string[]
-  icon: typeof Settings2
 }
 
-type FlowStep = {
+type WorkStep = {
   title: string
-  detail: string
+  description: string
 }
 
-type TrustPillar = {
-  title: string
-  detail: string
+type StatItem = {
+  value: string
+  label: string
 }
-
-const NAV_ITEMS = [
-  { href: '#benefits', label: 'Capabilities' },
-  { href: '#how', label: 'How It Works' },
-  { href: '#docs', label: 'Operational Clarity' },
-  { href: '#trust', label: 'Institutional Trust' },
-  { href: '#contact', label: 'Start' },
-]
-
-const FRAMEWORKS = ['Next.js', 'Vite', 'Astro', 'Remix', 'SvelteKit', 'Nuxt', 'React Router', 'Gatsby', 'Storybook']
 
 const VALUE_CARDS: ValueCard[] = [
   {
-    title: 'Zero Configuration Detection',
-    description: 'המערכת מזהה framework, תלותים ותצורת build באופן אוטומטי וללא הכנה ידנית.',
-    bullets: ['Auto framework detection', 'Deterministic packaging', 'Clean preview generation'],
-    icon: Settings2,
+    label: 'Platform Clarity',
+    title: 'One control plane for shipping',
+    description: 'Bring environments, policies, and releases into one calm workflow your team can trust.',
   },
   {
-    title: 'Claimable Ownership Flow',
-    description: 'כל deployment יוצא עם מנגנון Claim מובנה להעברת בעלות מסודרת למשתמש קצה.',
-    bullets: ['Structured ownership transfer', 'Secure claim handoff', 'Readable deployment trail'],
-    icon: ShieldCheck,
+    label: 'Team Focus',
+    title: 'Less operational drag',
+    description: 'Automate repetitive setup and guardrails so engineers can stay in product flow longer.',
   },
   {
-    title: 'Production Governance',
-    description: 'תשתית פריסה יציבה שמחברת מהירות ביצוע עם בקרה ואמינות ברמת production.',
-    bullets: ['Operational stability', 'Policy-ready release path', 'Live status visibility'],
-    icon: Rocket,
+    label: 'Production Confidence',
+    title: 'Built for real pressure',
+    description: 'Move fast without losing control when incidents, scale, and handoffs happen at the same time.',
   },
 ]
 
-const FLOW_STEPS: FlowStep[] = [
+const WORK_STEPS: WorkStep[] = [
   {
-    title: 'Connect',
-    detail: 'מחברים את קוד ה-Agent או skill repository ומגדירים יעד פריסה.',
+    title: 'Connect your stack',
+    description: 'Link repositories, cloud targets, and runtime settings in minutes, not days.',
   },
   {
-    title: 'Build',
-    detail: 'FERDI מריץ זיהוי אוטומטי, בונה חבילה ומוודא שכל התלויות והתצורה תקינות.',
+    title: 'Define release rules',
+    description: 'Set clear quality gates and rollout behavior once, then apply them across environments.',
   },
   {
-    title: 'Deploy',
-    detail: 'נוצר URL חי יחד עם Claim URL להעברת בעלות וניהול המשך ב-Vercel.',
-  },
-]
-
-const TRUST_PILLARS: TrustPillar[] = [
-  {
-    title: 'Human Oversight',
-    detail: 'צוות FERDI מגדיר תהליך עם רמת שקיפות שמאפשרת קבלת החלטות מהירה ובטוחה.',
-  },
-  {
-    title: 'Operational Discipline',
-    detail: 'הפריסות מנוהלות כשרשרת מבוקרת: זיהוי, build, בדיקת תקינות, ו-handoff.',
-  },
-  {
-    title: 'Calm Delivery Experience',
-    detail: 'פחות רעש תפעולי, יותר בהירות מערכתית גם כאשר הסביבה מורכבת.',
+    title: 'Ship with confidence',
+    description: 'Deploy with traceability, instant visibility, and a clean handoff to the whole team.',
   },
 ]
 
-const CLI_SNIPPET = 'npx skill-deploy ./agent-skills --framework auto --claim --target vercel'
+const STATS: StatItem[] = [
+  { value: '99.99%', label: 'deployment uptime' },
+  { value: '< 8m', label: 'time to first release' },
+  { value: '4.2x', label: 'faster delivery cycles' },
+  { value: '120+', label: 'teams shipping on Ferdi' },
+]
+
+const FOOTER_LINKS = {
+  Product: ['Platform', 'Security', 'Roadmap'],
+  Resources: ['Docs', 'Status', 'Changelog'],
+  Company: ['About', 'Contact', 'Careers'],
+}
+
+function LineIcon() {
+  return (
+    <svg className={styles.lineIcon} viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 15.5h5l2.2-3.5 3.6 5.5 2.2-3H21" fill="none" />
+      <path d="M3 8h18" fill="none" />
+    </svg>
+  )
+}
 
 export default function HomePage() {
-  const [copied, setCopied] = useState(false)
-
-  const handleCopySnippet = async () => {
-    try {
-      await navigator.clipboard.writeText(CLI_SNIPPET)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1800)
-    } catch {
-      setCopied(false)
-    }
-  }
-
   return (
-    <main className="skill-page relative z-10">
-      <SiteHeader />
-      <Hero />
+    <main className={styles.page}>
+      <section id="hero" className={`${styles.section} ${styles.heroSection}`}>
+        <div className={styles.container}>
+          <a className={styles.heroLogoLink} href="#hero" aria-label="Ferdi home">
+            <Image
+              src="/ferdi_logo_final.svg"
+              alt="Ferdi logo"
+              width={170}
+              height={130}
+              priority
+              className={styles.logo}
+            />
+          </a>
 
-      <section className="skill-shell section-block section-block-compact" aria-label="Trusted frameworks">
-        <p className="section-eyebrow section-eyebrow-center">Trusted framework coverage</p>
-        <div className="framework-marquee">
-          <ul className="framework-marquee-track" dir="ltr">
-            {[...FRAMEWORKS, ...FRAMEWORKS].map((item, index) => (
-              <li key={`${item}-${index}`} className="framework-chip">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section id="benefits" className="skill-shell section-block">
-        <div className="section-heading">
-          <p className="section-eyebrow">What FERDI Delivers</p>
-          <h2 className="section-title">Agent deployment that stays clear, controlled, and production-ready</h2>
-        </div>
-
-        <div className="feature-grid">
-          {VALUE_CARDS.map((card) => (
-            <article key={card.title} className="value-card">
-              <div className="value-icon">
-                <card.icon size={18} aria-hidden="true" />
-              </div>
-
-              <h3>{card.title}</h3>
-              <p>{card.description}</p>
-
-              <ul>
-                {card.bullets.map((bullet) => (
-                  <li key={bullet}>
-                    <Check size={14} aria-hidden="true" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="how" className="skill-shell section-block">
-        <div className="section-heading">
-          <p className="section-eyebrow">Flow</p>
-          <h2 className="section-title">Connect. Build. Deploy.</h2>
-        </div>
-
-        <div className="flow-grid">
-          {FLOW_STEPS.map((step, index) => (
-            <article key={step.title} className="step-card">
-              <p className="step-index">0{index + 1}</p>
-              <h3>{step.title}</h3>
-              <p>{step.detail}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="docs" className="skill-shell section-block">
-        <div className="code-panel">
-          <div className="code-panel-top">
-            <div>
-              <p className="section-eyebrow">Operational Clarity</p>
-              <h3>One clean command to start locally</h3>
-            </div>
-
-            <button type="button" onClick={handleCopySnippet} className="copy-button">
-              {copied ? <Check size={15} aria-hidden="true" /> : <Copy size={15} aria-hidden="true" />}
-              {copied ? 'Copied' : 'Copy command'}
-            </button>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>Infrastructure that gets out of your way.</h1>
+            <p className={styles.heroSubtitle}>
+              Ferdi helps modern teams ship faster with the control, clarity, and calm that production work demands.
+            </p>
+            <a className={styles.ctaButton} href="#final-cta">
+              Start building
+            </a>
           </div>
-
-          <pre className="code-block" dir="ltr">
-            <code>{CLI_SNIPPET}</code>
-          </pre>
         </div>
       </section>
 
-      <section id="trust" className="skill-shell section-block">
-        <div className="institution-layer">
-          <div className="section-heading">
-            <p className="section-eyebrow">Institutional Trust</p>
-            <h2 className="section-title">Built to feel calm and dependable under real operating pressure</h2>
-          </div>
+      <section id="value" className={`${styles.section} ${styles.lightSection}`}>
+        <div className={styles.container}>
+          <header className={styles.sectionHeader}>
+            <p className={styles.overline}>Value Proposition</p>
+            <h2 className={styles.sectionTitle}>Built for teams who care about speed and standards</h2>
+          </header>
 
-          <div className="institution-grid">
-            {TRUST_PILLARS.map((pillar) => (
-              <article key={pillar.title} className="institution-card">
-                <h3>{pillar.title}</h3>
-                <p>{pillar.detail}</p>
+          <div className={styles.valueGrid}>
+            {VALUE_CARDS.map((card) => (
+              <article key={card.title} className={styles.valueCard}>
+                <div className={styles.cardTop}>
+                  <LineIcon />
+                  <p className={styles.overline}>{card.label}</p>
+                </div>
+                <h3 className={styles.cardTitle}>{card.title}</h3>
+                <p className={styles.cardBody}>{card.description}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="skill-shell section-block section-block-last">
-        <div className="glass-callout">
-          <p className="section-eyebrow">Final CTA</p>
-          <h2 className="section-title">Start Deploying for Free</h2>
-          <p className="section-subtitle">
-            Turn deployment complexity into one controlled, readable flow your team can trust.
-          </p>
+      <section id="how" className={`${styles.section} ${styles.frostSection}`}>
+        <div className={styles.container}>
+          <header className={styles.sectionHeader}>
+            <p className={styles.overline}>How It Works</p>
+            <h2 className={styles.sectionTitle}>Three steps from setup to stable delivery</h2>
+          </header>
 
-          <div className="cta-row">
-            <a href="#hero" className="cta-glow cta-primary">
-              Start Deploying for Free
-              <ArrowLeft size={16} aria-hidden="true" />
-            </a>
-            <a href="#docs" className="cta-secondary">
-              Read Docs
+          <ol className={styles.stepsGrid}>
+            {WORK_STEPS.map((step, index) => (
+              <li key={step.title} className={styles.stepCard}>
+                <span className={styles.stepNumber}>{String(index + 1).padStart(2, '0')}</span>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepBody}>{step.description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section id="stats" className={`${styles.section} ${styles.statsSection}`}>
+        <div className={styles.container}>
+          <header className={styles.sectionHeader}>
+            <p className={styles.overlineDark}>Social Proof</p>
+            <h2 className={styles.sectionTitleDark}>Trusted by teams that ship every week</h2>
+          </header>
+
+          <div className={styles.statsGrid}>
+            {STATS.map((stat) => (
+              <article key={stat.label} className={styles.statCard}>
+                <p className={styles.statValue}>{stat.value}</p>
+                <p className={styles.statLabel}>{stat.label}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="final-cta" className={`${styles.section} ${styles.finalCtaSection}`}>
+        <div className={styles.container}>
+          <div className={styles.finalCtaInner}>
+            <h2 className={styles.finalCtaTitle}>Ready to simplify your delivery stack?</h2>
+            <a className={styles.ctaButton} href="#hero">
+              See how it works
             </a>
           </div>
         </div>
       </section>
 
-      <SiteFooter />
-    </main>
-  )
-}
-
-function SiteHeader() {
-  return (
-    <header className="site-header">
-      <div className="skill-shell site-header-inner">
-        <a href="#hero" className="brand-lockup">
-          <span className="brand-mark">F</span>
-          <span className="brand-copy">
-            <span className="brand-copy-top">FERDI</span>
-            <span className="brand-copy-main">Skill Deploy</span>
-          </span>
-        </a>
-
-        <nav className="site-nav" aria-label="Primary navigation">
-          {NAV_ITEMS.map((item) => (
-            <a key={item.href} href={item.href}>
-              {item.label}
+      <footer className={styles.footer}>
+        <div className={styles.container}>
+          <div className={styles.footerTop}>
+            <a className={styles.footerLogoLink} href="#hero" aria-label="Ferdi home">
+              <Image
+                src="/ferdi_logo_final.svg"
+                alt="Ferdi logo"
+                width={130}
+                height={100}
+                className={styles.footerLogo}
+              />
             </a>
-          ))}
-        </nav>
+          </div>
 
-        <a href="#contact" className="site-header-cta">
-          Start Free
-          <ArrowLeft size={14} aria-hidden="true" />
-        </a>
-      </div>
-    </header>
-  )
-}
-
-function SiteFooter() {
-  return (
-    <footer className="site-footer">
-      <div className="skill-shell site-footer-inner">
-        <p>© {new Date().getFullYear()} FERDI Skill Deploy</p>
-
-        <div className="footer-links">
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="footer-link">
-            <Github size={14} aria-hidden="true" />
-            GitHub
-            <ExternalLink size={12} aria-hidden="true" />
-          </a>
-          <a href="https://vercel.com" target="_blank" rel="noreferrer" className="footer-link">
-            Vercel
-            <ExternalLink size={12} aria-hidden="true" />
-          </a>
+          <div className={styles.footerGrid}>
+            {Object.entries(FOOTER_LINKS).map(([title, links]) => (
+              <div key={title} className={styles.footerColumn}>
+                <p className={styles.footerHeading}>{title}</p>
+                <ul className={styles.footerLinks}>
+                  {links.map((link) => (
+                    <li key={link}>
+                      <a href="#" className={styles.footerLink}>
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </main>
   )
 }
