@@ -15,15 +15,20 @@ body {
   margin: 0;
   min-height: 100%;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--color-bg-primary);
+  background: var(--ferdi-white);
   color: var(--color-text-primary);
   font-family: var(--font-primary);
   line-height: var(--leading-normal);
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -33,4 +38,13 @@ a {
 img,
 svg {
   max-width: 100%;
+}
+
+::selection {
+  background: rgba(62, 172, 224, 0.2);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ferdi-sky);
+  outline-offset: 2px;
 }
