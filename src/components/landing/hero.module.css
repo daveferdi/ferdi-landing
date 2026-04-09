@@ -29,7 +29,22 @@
 @keyframes drift { 0%,100% { transform: translate(0,0); } 50% { transform: translate(8px,-5px); } }
 
 /* ═══ NAVBAR ═══ */
-.nav { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; direction: rtl; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(4,14,36,0.6); border-bottom: 1px solid rgba(62,172,224,0.04); transition: all 0.3s ease; }
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  direction: rtl;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(6, 20, 40, 0.6);
+  border-bottom: 1px solid rgba(62, 172, 224, 0.04);
+}
 .navRight { display: flex; align-items: center; gap: 4px; }
 .navLink { color: rgba(181,226,248,0.3); font-size: 13px; text-decoration: none; padding: 7px 14px; transition: color 0.3s; font-weight: 400; background: none; border: none; cursor: pointer; font-family: inherit; }
 .navLink:hover { color: rgba(181,226,248,0.7); }
@@ -38,11 +53,11 @@
 .navLeft { display: flex; align-items: center; gap: 9px; }
 .navLogoImg { height: 34px; width: auto; opacity: 0.85; transition: transform 0.3s ease; }
 .navLogoImg:hover { transform: scale(1.05); }
-.navWord { color: rgba(181,226,248,0.6); font-size: 16px; font-weight: 300; letter-spacing: 5px; }
-.navAi { font-size: 10px; font-weight: 500; color: rgba(62,172,224,0.4); letter-spacing: 1.5px; margin-left: 3px; }
+.navWord { color: rgba(181, 226, 248, 0.6); font-size: 16px; font-weight: 300; letter-spacing: 5px; }
+.navAi { font-size: 10px; font-weight: 500; color: rgba(62, 172, 224, 0.4); letter-spacing: 1.5px; margin-left: 3px; }
 
 /* ═══ CONTENT ═══ */
-.heroInner { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; padding: 60px 40px 80px; gap: 48px; direction: rtl; }
+.heroInner { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; padding: 80px 40px 80px; gap: 48px; direction: rtl; }
 
 /* ═══ TEXT ═══ */
 .textSide { flex: 1; max-width: 480px; }
