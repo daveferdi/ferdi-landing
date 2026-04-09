@@ -15,13 +15,13 @@ const RECEIPT_LINES = [
 ];
 
 const PARTICLES = [
-  { size: 4, color: 'blue', top: '44%', right: '-14px', dx: '-188px', dy: '-28px', dur: '3s', delay: '0s', opacity: 0.5 },
-  { size: 3, color: 'peach', top: '53%', right: '-10px', dx: '-178px', dy: '-48px', dur: '3.5s', delay: '0.5s', opacity: 0.4 },
-  { size: 4, color: 'blue', top: '49%', right: '-18px', dx: '-202px', dy: '-12px', dur: '2.8s', delay: '1s', opacity: 0.5 },
-  { size: 3, color: 'blue', top: '59%', right: '-8px', dx: '-172px', dy: '-36px', dur: '3.2s', delay: '1.5s', opacity: 0.3 },
-  { size: 3, color: 'peach', top: '47%', right: '-16px', dx: '-196px', dy: '12px', dur: '3.8s', delay: '0.8s', opacity: 0.4 },
-  { size: 2, color: 'blue', top: '56%', right: '-6px', dx: '-184px', dy: '-54px', dur: '4s', delay: '2s', opacity: 0.35 },
-  { size: 3, color: 'blue', top: '41%', right: '-12px', dx: '-168px', dy: '-18px', dur: '3.3s', delay: '1.2s', opacity: 0.45 },
+  { size: 8, color: 'blue', top: '34%', right: '6%', dx: '-242px', dy: '-24px', dur: '3s', delay: '0s', opacity: 0.62 },
+  { size: 7, color: 'peach', top: '42%', right: '11%', dx: '-214px', dy: '-36px', dur: '3.4s', delay: '0.45s', opacity: 0.52 },
+  { size: 8, color: 'blue', top: '50%', right: '8%', dx: '-236px', dy: '-10px', dur: '2.9s', delay: '0.9s', opacity: 0.66 },
+  { size: 6, color: 'blue', top: '58%', right: '14%', dx: '-198px', dy: '-34px', dur: '3.2s', delay: '1.3s', opacity: 0.5 },
+  { size: 7, color: 'peach', top: '64%', right: '9%', dx: '-224px', dy: '8px', dur: '3.8s', delay: '0.7s', opacity: 0.55 },
+  { size: 6, color: 'blue', top: '46%', right: '15%', dx: '-186px', dy: '-52px', dur: '4s', delay: '1.8s', opacity: 0.48 },
+  { size: 7, color: 'blue', top: '72%', right: '7%', dx: '-250px', dy: '-18px', dur: '3.5s', delay: '1.1s', opacity: 0.58 },
 ];
 
 export default function HeroMockup() {
