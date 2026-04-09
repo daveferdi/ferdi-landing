@@ -103,17 +103,6 @@ export default function HeroBackground() {
           loop
           playsInline
           preload="auto"
-          onTimeUpdate={(e) => {
-            const vid = e.currentTarget;
-            const timeLeft = vid.duration - vid.currentTime;
-            if (timeLeft < 0.5) {
-              vid.style.opacity = String(timeLeft / 0.5);
-            } else if (vid.currentTime < 0.5) {
-              vid.style.opacity = String(vid.currentTime / 0.5);
-            } else {
-              vid.style.opacity = '1';
-            }
-          }}
         >
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
