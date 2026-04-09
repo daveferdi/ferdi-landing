@@ -32,15 +32,6 @@ export default function HeroContent() {
         <span className={styles.trustItem}>⏱ חיסכון עשרות שעות</span>
       </div>
 
-      <div className={styles.founder}>
-        <div className={styles.founderPhoto}>
-          <span className={styles.founderPlaceholder}>D</span>
-        </div>
-        <div className={styles.founderInfo}>
-          <span className={styles.founderName}>התמונה שלך תהיה כאן</span>
-          <span className={styles.founderRole}>מייסד FerdiAI</span>
-        </div>
-      </div>
     </div>
   );
 }

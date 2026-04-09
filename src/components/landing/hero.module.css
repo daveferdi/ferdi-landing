@@ -57,11 +57,11 @@
 .navAi { font-size: 10px; font-weight: 500; color: rgba(62, 172, 224, 0.4); letter-spacing: 1.5px; margin-left: 3px; }
 
 /* ═══ CONTENT ═══ */
-.heroInner { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; padding: 80px 40px 80px; gap: 48px; direction: rtl; }
+.heroInner { position: relative; z-index: 10; display: flex; align-items: center; justify-content: center; max-width: 1100px; margin: 0 auto; padding: 80px 40px 80px; gap: 48px; direction: rtl; }
 
 /* ═══ TEXT ═══ */
-.textSide { flex: 1; max-width: 480px; }
-.overline { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 500; color: rgba(62,172,224,0.45); letter-spacing: 0.03em; margin-bottom: 18px; opacity: 0; }
+.textSide { flex: 1; max-width: 480px; text-align: center; align-items: center; display: flex; flex-direction: column; }
+.overline { display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-size: 11px; font-weight: 500; color: rgba(62,172,224,0.45); letter-spacing: 0.03em; margin-bottom: 18px; opacity: 0; }
 .overlineDot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,140,107,0.4); flex-shrink: 0; }
 .headline { font-size: clamp(1.65rem, 4.5vw, 2.3rem); font-weight: 700; color: rgba(255,255,255,0.93); line-height: 1.18; letter-spacing: -0.02em; margin: 0; opacity: 0; }
 .headlineAccent { background: linear-gradient(135deg, #3EACE0, #7EC8EE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -83,14 +83,14 @@
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ═══ BUTTONS ═══ */
-.btnRow { display: flex; gap: 10px; margin-top: 24px; flex-direction: row-reverse; opacity: 0; }
+.btnRow { display: flex; gap: 10px; margin-top: 24px; flex-direction: row; justify-content: center; opacity: 0; }
 .btnPrimary { background: #0D3E7A; color: white; padding: 13px 26px; border-radius: 8px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; box-shadow: 0 2px 12px rgba(13,62,122,0.25); transition: all 0.3s cubic-bezier(0.16,1,0.3,1); font-family: inherit; }
 .btnPrimary:hover { background: #1A6DBF; box-shadow: 0 4px 20px rgba(13,62,122,0.3); transform: translateY(-1px); }
 .btnGhost { background: transparent; color: rgba(181,226,248,0.35); padding: 13px 26px; border-radius: 8px; font-size: 14px; font-weight: 400; border: 1px solid rgba(126,200,238,0.08); cursor: pointer; transition: all 0.3s; font-family: inherit; }
 .btnGhost:hover { color: rgba(181,226,248,0.6); border-color: rgba(126,200,238,0.15); background: rgba(126,200,238,0.03); }
 
 /* ═══ TRUST ═══ */
-.trustBar { display: flex; align-items: center; gap: 14px; margin-top: 22px; flex-wrap: wrap; opacity: 0; }
+.trustBar { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 22px; flex-wrap: wrap; opacity: 0; }
 .trustItem { font-size: 11px; color: rgba(126,200,238,0.22); display: flex; align-items: center; gap: 5px; font-weight: 400; text-decoration: none; }
 .trustSep { width: 1px; height: 10px; background: rgba(126,200,238,0.06); }
 
