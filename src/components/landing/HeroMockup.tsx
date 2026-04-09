@@ -15,38 +15,50 @@ const RECEIPT_LINES = [
 ];
 
 const PARTICLES = [
-  { size: 8, color: 'blue', top: '22%', right: '-24px', dx: '-232px', dy: '-52px', dur: '3s', delay: '0s', opacity: 0.62 },
-  { size: 7, color: 'peach', top: '30%', right: '-42px', dx: '-248px', dy: '-38px', dur: '3.4s', delay: '0.45s', opacity: 0.52 },
-  { size: 8, color: 'blue', top: '38%', right: '-60px', dx: '-274px', dy: '-12px', dur: '2.9s', delay: '0.9s', opacity: 0.66 },
-  { size: 7, color: 'blue', top: '47%', right: '-28px', dx: '-218px', dy: '-28px', dur: '3.2s', delay: '1.3s', opacity: 0.5 },
-  { size: 8, color: 'peach', top: '56%', right: '-74px', dx: '-280px', dy: '18px', dur: '3.8s', delay: '0.7s', opacity: 0.55 },
-  { size: 7, color: 'blue', top: '64%', right: '-36px', dx: '-242px', dy: '-60px', dur: '4s', delay: '1.8s', opacity: 0.48 },
-  { size: 8, color: 'blue', top: '70%', right: '-52px', dx: '-262px', dy: '36px', dur: '3.5s', delay: '1.1s', opacity: 0.58 },
+  { size: 7, color: 'blue',  top: '30%', right: '-30px', dx: '-220px', dy: '-25px', dur: '3s',   delay: '0s',   po: 0.6 },
+  { size: 6, color: 'peach', top: '45%', right: '-15px', dx: '-200px', dy: '-45px', dur: '3.5s', delay: '0.6s', po: 0.4 },
+  { size: 7, color: 'blue',  top: '55%', right: '-40px', dx: '-240px', dy: '-10px', dur: '2.8s', delay: '1.1s', po: 0.55 },
+  { size: 5, color: 'blue',  top: '65%', right: '-20px', dx: '-180px', dy: '-35px', dur: '3.3s', delay: '1.6s', po: 0.35 },
+  { size: 6, color: 'peach', top: '38%', right: '-50px', dx: '-230px', dy: '15px',  dur: '3.8s', delay: '0.9s', po: 0.4 },
+  { size: 5, color: 'blue',  top: '50%', right: '-60px', dx: '-210px', dy: '-50px', dur: '4s',   delay: '2s',   po: 0.3 },
 ];
 
 export default function HeroMockup() {
   return (
     <div className={styles.mockupWrap} aria-hidden="true">
+      {/* Particles — OUTSIDE the card, floating in space around it */}
+      <div className={styles.particlesWrap}>
+        {PARTICLES.map((p, i) => (
+          <div
+            key={i}
+            className={`${styles.particle} ${p.color === 'peach' ? styles.particlePeach : styles.particleBlue}`}
+            style={{
+              width: p.size,
+              height: p.size,
+              top: p.top,
+              right: p.right,
+              '--dx': p.dx,
+              '--dy': p.dy,
+              '--dur': p.dur,
+              '--delay': p.delay,
+              '--po': p.po,
+            } as React.CSSProperties}
+          />
+        ))}
+      </div>
 
       {/* Mockup card */}
       <div className={styles.mockupCard}>
         <div className={styles.mockupInner}>
-          {/* Extracted data panel */}
           <div className={styles.panelData}>
             <div className={styles.panelTitle}>נתונים שחולצו</div>
             {FIELDS.map((f) => (
-              <div
-                key={f.label}
-                className={styles.field}
-                style={{ animationDelay: f.delay }}
-              >
+              <div key={f.label} className={styles.field} style={{ animationDelay: f.delay }}>
                 <span className={styles.fieldLabel}>{f.label}</span>
                 <span className={styles.fieldValue}>{f.value}</span>
               </div>
             ))}
           </div>
-
-          {/* Receipt panel */}
           <div className={styles.panelReceipt}>
             <div className={styles.scanLine} />
             <div className={styles.receipt}>
@@ -64,31 +76,10 @@ export default function HeroMockup() {
             </div>
           </div>
         </div>
-
         <div className={styles.mockupStatus}>
           <span className={styles.statusDot} />
           <span className={styles.statusText}>מעבד קבלה בזמן אמת</span>
         </div>
-      </div>
-      {/* Data particles */}
-      <div className={styles.particlesWrap}>
-        {PARTICLES.map((p, i) => (
-          <div
-            key={i}
-            className={`${styles.particle} ${p.color === 'peach' ? styles.particlePeach : styles.particleBlue}`}
-            style={{
-              width: p.size,
-              height: p.size,
-              top: p.top,
-              right: p.right,
-              '--dx': p.dx,
-              '--dy': p.dy,
-              '--dur': p.dur,
-              '--delay': p.delay,
-              '--peak-opacity': p.opacity,
-            } as React.CSSProperties}
-          />
-        ))}
       </div>
     </div>
   );

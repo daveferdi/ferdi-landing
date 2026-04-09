@@ -34,10 +34,6 @@ export default function HeroContent() {
 
       <div className={styles.founder}>
         <div className={styles.founderPhoto}>
-          {/* 
-            Replace with: <img src="/founder.jpg" alt="שם המייסד" />
-            When you have the photo ready 
-          */}
           <span className={styles.founderPlaceholder}>D</span>
         </div>
         <div className={styles.founderInfo}>
