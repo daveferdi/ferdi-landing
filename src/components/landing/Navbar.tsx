@@ -14,26 +14,15 @@ export default function Navbar() {
 
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
-      {/* Links + CTA — right side (RTL start) */}
-      <div className={styles.navLinks}>
+      <div className={styles.navRight}>
         <a href="#how" className={styles.navLink}>איך זה עובד</a>
         <a href="#security" className={styles.navLink}>אבטחת מידע</a>
         <a href="#calculator" className={styles.navLink}>מחשבון חיסכון</a>
         <button className={styles.navCta}>תיאום פיילוט</button>
       </div>
-
-      {/* Logo — left side (RTL end) */}
-      <div className={styles.navLogo}>
-        <span className={styles.navWordmark}>Ferdi</span>
-        {/* 
-          Logo loaded from public/ferdi-logo.svg
-          Replace the src to update the logo anytime 
-        */}
-        <img
-          src="/ferdi-logo.svg"
-          alt="Ferdi"
-          className={styles.navLogoImg}
-        />
+      <div className={styles.navLeft}>
+        <span className={styles.navWord}>Ferdi<span className={styles.navAi}>AI</span></span>
+        <img src="/ferdi-logo.svg" alt="Ferdi" className={styles.navLogoImg} />
       </div>
     </nav>
   );

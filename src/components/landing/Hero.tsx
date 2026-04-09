@@ -13,6 +13,14 @@ export default function Hero() {
         <HeroContent />
         <HeroMockup />
       </div>
+      <div className={styles.security}>
+        <div className={styles.secBadge}>
+          <span className={styles.secIcon}>🛡</span> SOC 2 Compliant
+        </div>
+        <div className={styles.secBadge}>
+          <span className={styles.secIcon}>🔐</span> הצפנת AES-256
+        </div>
+      </div>
     </section>
   );
 }

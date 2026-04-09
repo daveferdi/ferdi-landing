@@ -3,13 +3,8 @@ import styles from './hero.module.css';
 export default function HeroBackground() {
   return (
     <>
-      {/* Video background layer */}
+      {/* Layer 0: Video (optional — graceful fallback if no video) */}
       <div className={styles.videoBg}>
-        {/* 
-          Replace src with your video file.
-          Drop your mp4 in public/hero-bg.mp4
-          If no video yet — this renders as empty dark bg (graceful fallback)
-        */}
         <video
           className={styles.video}
           autoPlay
@@ -21,16 +16,23 @@ export default function HeroBackground() {
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
         <div className={styles.videoOverlay} />
-        <div className={styles.videoGradient} />
-        <div className={styles.videoSideFade} />
       </div>
 
-      {/* Gradient blobs for depth */}
-      <div className={styles.blob1} />
-      <div className={styles.blob2} />
+      {/* Layer 1: Blue gradient base */}
+      <div className={styles.bgBase} />
+      <div className={styles.bgDiag} />
+      <div className={styles.bgDepth} />
 
-      {/* Vignette */}
-      <div className={styles.vignette} />
+      {/* Layer 2: Ambient glows */}
+      <div className={styles.bgGlow1} />
+      <div className={styles.bgGlow2} />
+      <div className={styles.bgToplight} />
+
+      {/* Layer 3: Noise texture */}
+      <div className={styles.bgNoise} />
+
+      {/* Bottom accent line */}
+      <div className={styles.bgBottomLine} />
     </>
   );
 }

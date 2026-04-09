@@ -1,11 +1,11 @@
 import styles from './hero.module.css';
 
 const FIELDS = [
-  { label: 'ספק', value: 'רוזנברג ושות׳', delay: '0.8s' },
-  { label: 'סכום', value: '₪4,250.00', delay: '1.1s' },
+  { label: 'ספק', value: 'רוזנברג ושות׳', delay: '0.9s' },
+  { label: 'סכום', value: '₪4,250.00', delay: '1.15s' },
   { label: 'מע״מ', value: '₪722.50', delay: '1.4s' },
-  { label: 'תאריך', value: '15.03.2026', delay: '1.7s' },
-  { label: 'סוג', value: 'חשבונית מס', delay: '2.0s' },
+  { label: 'תאריך', value: '15.03.2026', delay: '1.65s' },
+  { label: 'סוג', value: 'חשבונית מס', delay: '1.9s' },
 ];
 
 const RECEIPT_LINES = [
@@ -14,9 +14,41 @@ const RECEIPT_LINES = [
   { item: 'מע״מ 17%', amount: '₪722.50' },
 ];
 
+const PARTICLES = [
+  { size: 4, color: 'blue', top: '45%', right: '36%', dx: '-140px', dy: '-30px', dur: '3s', delay: '0s', opacity: 0.5 },
+  { size: 3, color: 'peach', top: '55%', right: '34%', dx: '-130px', dy: '-50px', dur: '3.5s', delay: '0.5s', opacity: 0.4 },
+  { size: 4, color: 'blue', top: '50%', right: '38%', dx: '-150px', dy: '-10px', dur: '2.8s', delay: '1s', opacity: 0.5 },
+  { size: 3, color: 'blue', top: '60%', right: '35%', dx: '-120px', dy: '-40px', dur: '3.2s', delay: '1.5s', opacity: 0.3 },
+  { size: 3, color: 'peach', top: '48%', right: '37%', dx: '-145px', dy: '10px', dur: '3.8s', delay: '0.8s', opacity: 0.4 },
+  { size: 2, color: 'blue', top: '52%', right: '33%', dx: '-135px', dy: '-55px', dur: '4s', delay: '2s', opacity: 0.35 },
+  { size: 3, color: 'blue', top: '42%', right: '36%', dx: '-125px', dy: '-20px', dur: '3.3s', delay: '1.2s', opacity: 0.45 },
+];
+
 export default function HeroMockup() {
   return (
-    <div className={styles.mockupSide} aria-hidden="true">
+    <div className={styles.mockupWrap} aria-hidden="true">
+      {/* Data particles */}
+      <div className={styles.particlesWrap}>
+        {PARTICLES.map((p, i) => (
+          <div
+            key={i}
+            className={`${styles.particle} ${p.color === 'peach' ? styles.particlePeach : styles.particleBlue}`}
+            style={{
+              width: p.size,
+              height: p.size,
+              top: p.top,
+              right: p.right,
+              '--dx': p.dx,
+              '--dy': p.dy,
+              '--dur': p.dur,
+              '--delay': p.delay,
+              '--peak-opacity': p.opacity,
+            } as React.CSSProperties}
+          />
+        ))}
+      </div>
+
+      {/* Mockup card */}
       <div className={styles.mockupCard}>
         <div className={styles.mockupInner}>
           {/* Extracted data panel */}
@@ -34,7 +66,7 @@ export default function HeroMockup() {
             ))}
           </div>
 
-          {/* Receipt scan panel */}
+          {/* Receipt panel */}
           <div className={styles.panelReceipt}>
             <div className={styles.scanLine} />
             <div className={styles.receipt}>
@@ -53,7 +85,6 @@ export default function HeroMockup() {
           </div>
         </div>
 
-        {/* Status bar */}
         <div className={styles.mockupStatus}>
           <span className={styles.statusDot} />
           <span className={styles.statusText}>מעבד קבלה בזמן אמת</span>
