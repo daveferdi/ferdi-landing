@@ -49,11 +49,11 @@ export default function HeroBackground() {
         const t = r / ROWS;
         const distCenter = Math.abs(t - 0.42);
         if (distCenter < 0.05) {
-          const peach = (0.05 - distCenter) / 0.05 * 0.35;
+          const peach = (0.05 - distCenter) / 0.05 * 0.7;
           path.setAttribute('stroke', `rgba(255,170,130,${peach})`);
           path.setAttribute('stroke-width', '1');
         } else {
-          const op = 0.06 + Math.sin(t * Math.PI) * 0.07;
+          const op = 0.08 + Math.sin(t * Math.PI) * 0.09;
           path.setAttribute('stroke', `rgba(126,200,238,${op})`);
           path.setAttribute('stroke-width', '0.6');
         }
@@ -73,7 +73,7 @@ export default function HeroBackground() {
         path.setAttribute('fill', 'none');
 
         const t = c / COLS;
-        const op = 0.05 + Math.sin(t * Math.PI) * 0.05;
+        const op = 0.1 + Math.sin(t * Math.PI) * 0.08;
         path.setAttribute('stroke', `rgba(126,200,238,${op})`);
         path.setAttribute('stroke-width', '0.5');
         svg.appendChild(path);
@@ -94,21 +94,6 @@ export default function HeroBackground() {
 
   return (
     <>
-      {/* Video layer (optional) */}
-      <div className={styles.videoBg}>
-        <video
-          className={styles.video}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        >
-          <source src="/hero-bg.mp4" type="video/mp4" />
-        </video>
-        <div className={styles.videoOverlay} />
-      </div>
-
       {/* Wave mesh */}
       <div className={styles.meshWrap}>
         <div className={styles.meshCanvas} ref={canvasRef} />
