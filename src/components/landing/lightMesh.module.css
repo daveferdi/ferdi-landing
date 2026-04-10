@@ -60,3 +60,7 @@
   background: linear-gradient(270deg, #EEF3F8 0%, transparent 100%);
   z-index: 1;
 }
+
+@media (max-width: 768px) {
+  .wrap { height: 250px; }
+}

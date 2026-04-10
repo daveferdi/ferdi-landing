@@ -8,14 +8,24 @@ const AI_LETTERS = ['A', 'I'];
 const ALL = [...LETTERS, ...AI_LETTERS];
 
 // Each letter flies in from a different off-screen origin
-const ORIGINS = [
-  { x: -600, y: -200, r: -45 },   // F — far top-left
-  { x: 500, y: -300, r: 30 },     // e — far top-right
-  { x: -400, y: 250, r: 50 },     // r — far bottom-left
-  { x: 700, y: 100, r: -35 },     // d — far right
-  { x: -300, y: -250, r: 40 },    // i — far top-left
-  { x: 600, y: -150, r: -50 },    // A — far top-right
-  { x: -500, y: 200, r: 35 },     // I — far bottom-left
+const ORIGINS_DESKTOP = [
+  { x: -600, y: -200, r: -45 },
+  { x: 500, y: -300, r: 30 },
+  { x: -400, y: 250, r: 50 },
+  { x: 700, y: 100, r: -35 },
+  { x: -300, y: -250, r: 40 },
+  { x: 600, y: -150, r: -50 },
+  { x: -500, y: 200, r: 35 },
+];
+
+const ORIGINS_MOBILE = [
+  { x: -200, y: -80, r: -25 },
+  { x: 180, y: -100, r: 20 },
+  { x: -150, y: 90, r: 30 },
+  { x: 220, y: 50, r: -20 },
+  { x: -120, y: -90, r: 25 },
+  { x: 200, y: -60, r: -30 },
+  { x: -180, y: 70, r: 20 },
 ];
 
 // Stagger delay per letter (ms)
@@ -24,6 +34,7 @@ const BASE_DELAY = 500;
 
 export default function Navbar() {
   const [landed, setLanded] = useState<boolean[]>(new Array(ALL.length).fill(false));
+  const [origins, setOrigins] = useState(ORIGINS_DESKTOP);
   const hasScrollTriggered = useRef(false);
   const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
@@ -49,6 +60,11 @@ export default function Navbar() {
     if (prefersReducedMotion) {
       setLanded(new Array(ALL.length).fill(true));
       return;
+    }
+
+    // Detect mobile for smaller scatter
+    if (window.innerWidth <= 768) {
+      setOrigins(ORIGINS_MOBILE);
     }
 
     // First trigger on load
@@ -90,7 +106,7 @@ export default function Navbar() {
                 transform: 'translate(0, 0) rotate(0deg)',
                 opacity: 1,
               } : {
-                transform: `translate(${ORIGINS[i].x}px, ${ORIGINS[i].y}px) rotate(${ORIGINS[i].r}deg)`,
+                transform: `translate(${origins[i].x}px, ${origins[i].y}px) rotate(${origins[i].r}deg)`,
                 opacity: 0,
               }}
             >
@@ -107,7 +123,7 @@ export default function Navbar() {
                   transform: 'translate(0, 0) rotate(0deg)',
                   opacity: 1,
                 } : {
-                  transform: `translate(${ORIGINS[idx].x}px, ${ORIGINS[idx].y}px) rotate(${ORIGINS[idx].r}deg)`,
+                  transform: `translate(${origins[idx].x}px, ${origins[idx].y}px) rotate(${origins[idx].r}deg)`,
                   opacity: 0,
                 }}
               >

@@ -11,12 +11,14 @@ export default function Hero() {
       <div className={styles.heroStage}>
         <div className={styles.heroContent}>
           <h1 className={styles.headline}>
-            מערכות AI למשרדי רואי חשבון. מותאמות למשרד שלך.
+            מערכות AI למשרדי רואי חשבון.
+            <br />
+            מותאמות למשרד שלך.
           </h1>
 
           <p className={styles.subtitle}>
-            מערכת AI שמותאמת לצוות, לתהליכים ולמערכות שכבר עובדות
-            אצלך — בלי להחליף, בלי לסבך ובלי לייצר תלות.
+            מותאם לצוות, לתהליכים ולמערכות שכבר פועלות במשרד
+            — בהטמעה מסודרת, שקופה, וכזו שמשאירה את השליטה אצלך.
           </p>
 
           <div className={styles.btnRow}>
