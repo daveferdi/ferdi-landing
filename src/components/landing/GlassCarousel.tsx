@@ -28,7 +28,7 @@ export default function GlassCarousel() {
       offset += speed;
       // When we've scrolled one full set forward, jump back seamlessly
       if (offset >= 0) offset -= SET_WIDTH;
-      track.style.transform = `translateX(${offset}px)`;
+      track!.style.transform = `translateX(${offset}px)`;
       animId = requestAnimationFrame(animate);
     }
 
