@@ -96,6 +96,8 @@ export default function HeroBackground() {
       <div className={styles.bgGlow1} />
       <div className={styles.bgGlow2} />
       <div className={styles.bgGlow3} />
+      <div className={styles.bgLiftTR} />
+      <div className={styles.bgLiftTL} />
       <div className={styles.bgNoise} />
     </>
   );
