@@ -53,7 +53,7 @@ export default function HeroBackground() {
           path.setAttribute('stroke', `rgba(255,170,130,${peach})`);
           path.setAttribute('stroke-width', '1');
         } else {
-          const op = 0.08 + Math.sin(t * Math.PI) * 0.09;
+          const op = 0.12 + Math.sin(t * Math.PI) * 0.1;
           path.setAttribute('stroke', `rgba(126,200,238,${op})`);
           path.setAttribute('stroke-width', '0.6');
         }
@@ -73,7 +73,7 @@ export default function HeroBackground() {
         path.setAttribute('fill', 'none');
 
         const t = c / COLS;
-        const op = 0.1 + Math.sin(t * Math.PI) * 0.08;
+        const op = 0.12 + Math.sin(t * Math.PI) * 0.08;
         path.setAttribute('stroke', `rgba(126,200,238,${op})`);
         path.setAttribute('stroke-width', '0.5');
         svg.appendChild(path);
