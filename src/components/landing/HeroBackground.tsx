@@ -17,7 +17,7 @@ export default function HeroBackground() {
     svg.setAttribute('preserveAspectRatio', 'none');
     svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%';
 
-    const ROWS = 30, COLS = 50;
+    const ROWS = 35, COLS = 60;
     let time = 0;
     let animId: number;
 
@@ -49,9 +49,9 @@ export default function HeroBackground() {
         const t = r / ROWS;
         const distCenter = Math.abs(t - 0.42);
         if (distCenter < 0.05) {
-          const peach = (0.05 - distCenter) / 0.05 * 0.7;
-          path.setAttribute('stroke', `rgba(255,170,130,${peach})`);
-          path.setAttribute('stroke-width', '1');
+          const peach = (0.05 - distCenter) / 0.05 * 0.8;
+          path.setAttribute('stroke', `rgba(255,160,120,${peach})`);
+          path.setAttribute('stroke-width', '1.5');
         } else {
           const op = 0.12 + Math.sin(t * Math.PI) * 0.1;
           path.setAttribute('stroke', `rgba(126,200,238,${op})`);
@@ -79,7 +79,7 @@ export default function HeroBackground() {
         svg.appendChild(path);
       }
 
-      time += 0.008;
+      time += 0.005;
       animId = requestAnimationFrame(render);
     }
 
@@ -106,6 +106,7 @@ export default function HeroBackground() {
       {/* Ambient glows */}
       <div className={styles.bgGlow1} />
       <div className={styles.bgGlow2} />
+      <div className={styles.bgGlow3} />
       <div className={styles.bgNoise} />
     </>
   );

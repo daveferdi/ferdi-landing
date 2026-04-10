@@ -21,6 +21,7 @@ export default function Hero() {
           <span className={styles.secIcon}>🔐</span> הצפנת AES-256
         </div>
       </div>
+      <div className={styles.heroTransition} />
     </section>
   );
 }
