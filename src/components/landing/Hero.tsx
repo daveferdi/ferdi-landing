@@ -10,31 +10,26 @@ export default function Hero() {
 
       <div className={styles.heroStage}>
         <div className={styles.heroContent}>
-          <div className={styles.overline}>
-            סוכן AI להנהלת חשבונות
-          </div>
-
           <h1 className={styles.headline}>
-            60% מזמן המשרד מתבזבז על עבודת &quot;קלדנות&quot;.
+            מערכות AI למשרדי רואי חשבון. מותאמות למשרד שלך.
           </h1>
 
           <p className={styles.subtitle}>
-            FerdiAI מחלץ נתונים מצילומי ווטסאפ וקבלות מקומטות, מסווג
-            לחשבון הנכון ומקליד ישירות לחשבשבת או לפריוריטי. הכל
-            ברקע, בלי מגע יד אדם. הגיע הזמן לחזור לייעץ.
+            מערכת AI שמותאמת לצוות, לתהליכים ולמערכות שכבר עובדות
+            אצלך — בלי להחליף, בלי לסבך ובלי לייצר תלות.
           </p>
 
           <div className={styles.btnRow}>
-            <button className={styles.btnPrimary}>איך זה עובד בפועל</button>
-            <button className={styles.btnGhost}>בדיקת התאמה למשרד</button>
+            <button className={styles.btnPrimary}>לקבוע שיחת היכרות</button>
+            <button className={styles.btnGhost}>לראות איך זה עובד</button>
           </div>
 
           <div className={styles.trustBar}>
-            <span className={styles.trustItem}>99.9% דיוק סיווג</span>
+            <span className={styles.trustItem}>מותאם למשרד שלך</span>
             <span className={styles.trustSep} />
-            <span className={styles.trustItem}>עיבוד מסמך ב-0.8 שניות</span>
+            <span className={styles.trustItem}>שקיפות מלאה</span>
             <span className={styles.trustSep} />
-            <span className={styles.trustItem}>אינטגרציה מלאה ל-ERP</span>
+            <span className={styles.trustItem}>בלי תלות</span>
           </div>
         </div>
       </div>

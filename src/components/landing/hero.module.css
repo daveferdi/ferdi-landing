@@ -134,8 +134,26 @@
 .navLeft { display: flex; align-items: center; gap: 9px; }
 .navLogoImg { height: 34px; width: auto; opacity: 0.85; transition: transform 0.3s ease; }
 .navLogoImg:hover { transform: scale(1.05); }
-.navWord { color: rgba(181, 226, 248, 0.65); font-size: 16px; font-weight: 300; letter-spacing: 5px; }
-.navAi { font-size: 10px; font-weight: 500; color: rgba(62, 172, 224, 0.4); letter-spacing: 1.5px; margin-left: 3px; }
+.navWordWrap { display: inline-flex; align-items: baseline; position: relative; direction: ltr; }
+.navLetter {
+  display: inline-block;
+  color: rgba(181, 226, 248, 0.65);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  transition: transform 1.2s cubic-bezier(0.22, 0.9, 0.36, 1), opacity 0.8s ease;
+  will-change: transform, opacity;
+}
+.navAiLetter {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(62, 172, 224, 0.55);
+  letter-spacing: 1.5px;
+  margin-left: 3px;
+  transition: transform 1.2s cubic-bezier(0.22, 0.9, 0.36, 1), opacity 0.8s ease;
+  will-change: transform, opacity;
+}
 
 /* ═══ STAGE + CONTENT ═══ */
 .heroStage {
@@ -168,15 +186,6 @@
 }
 
 /* ═══ TEXT ═══ */
-.overline {
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(62,172,224,0.45);
-  letter-spacing: 0.06em;
-  margin-bottom: 12px;
-  opacity: 0;
-}
-
 .headline {
   font-size: clamp(1.6rem, 4.2vw, 2.15rem);
   font-weight: 700;
@@ -189,7 +198,7 @@
 
 .subtitle {
   font-size: 15px;
-  color: rgba(181,226,248,0.52);
+  color: rgba(181,226,248,0.68);
   line-height: 1.75;
   margin-top: 12px;
   max-width: 440px;
@@ -242,19 +251,18 @@
   flex-wrap: wrap;
   opacity: 0;
 }
-.trustItem { font-size: 10px; color: rgba(126,200,238,0.5); font-weight: 400; }
-.trustSep { width: 1px; height: 12px; background: rgba(126,200,238,0.15); }
+.trustItem { font-size: 11px; color: rgba(181,226,248,0.72); font-weight: 400; }
+.trustSep { width: 1px; height: 12px; background: rgba(126,200,238,0.25); }
 
 /* ═══ ANIMATIONS ═══ */
 @media (prefers-reduced-motion: no-preference) {
-  .overline { animation: fadeUp 0.8s ease-out 0.15s forwards; }
-  .headline { animation: fadeUp 0.8s ease-out 0.3s forwards; }
-  .subtitle { animation: fadeUp 0.8s ease-out 0.45s forwards; }
-  .btnRow { animation: fadeUp 0.8s ease-out 0.6s forwards; }
-  .trustBar { animation: fadeUp 0.8s ease-out 0.75s forwards; }
+  .headline { animation: fadeUp 0.8s ease-out 0.15s forwards; }
+  .subtitle { animation: fadeUp 0.8s ease-out 0.3s forwards; }
+  .btnRow { animation: fadeUp 0.8s ease-out 0.45s forwards; }
+  .trustBar { animation: fadeUp 0.8s ease-out 0.6s forwards; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .overline, .headline, .subtitle, .btnRow, .trustBar { opacity: 1; }
+  .headline, .subtitle, .btnRow, .trustBar { opacity: 1; }
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
