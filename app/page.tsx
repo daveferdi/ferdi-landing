@@ -7,7 +7,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-[var(--ferdi-white)]">
       <main>
         <Hero />
-        <div className="relative z-20" style={{ marginTop: '-180px' }}>
+        <div className="relative z-20" style={{ marginTop: '-220px' }}>
           <GlassCarousel />
         </div>
         <ProblemSection />
