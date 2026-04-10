@@ -1,0 +1,62 @@
+/* Light mesh — dark lines on white background, continues Hero wave */
+
+.wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.canvas {
+  position: absolute;
+  top: -8%;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
+
+/* Fade overlays — dissolve the mesh edges into the white background */
+
+.fadeTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10%;
+  background: linear-gradient(180deg, #EEF3F8 0%, transparent 100%);
+  z-index: 1;
+}
+
+.fadeBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(0deg, #EEF3F8 0%, rgba(238,243,248,0.7) 50%, transparent 100%);
+  z-index: 1;
+}
+
+.fadeL {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(90deg, #EEF3F8 0%, transparent 100%);
+  z-index: 1;
+}
+
+.fadeR {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(270deg, #EEF3F8 0%, transparent 100%);
+  z-index: 1;
+}
