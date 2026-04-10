@@ -281,7 +281,7 @@
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
-  .hero { min-height: 85vh; }
+  .hero { min-height: 85vh; overflow: hidden; }
   .nav { padding: 12px 16px; justify-content: flex-end; }
   .navRight { display: none; }
   .navLeft { gap: 6px; }
