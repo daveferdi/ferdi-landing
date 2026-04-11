@@ -1,0 +1,89 @@
+/* Pain Section — operational tension, premium and restrained */
+
+.section {
+  position: relative;
+  background: var(--ferdi-white, #EEF3F8);
+  padding: clamp(80px, 12vh, 140px) 0;
+  direction: rtl;
+  text-align: right;
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--gutter, clamp(1rem, 4vw, 2rem));
+}
+
+/* ═══ HEADLINE ═══ */
+.headline {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  color: var(--ferdi-midnight, #061E44);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.headlineSub {
+  color: var(--ferdi-slate, #6B7B8D);
+  font-weight: 500;
+}
+
+/* ═══ BODY ═══ */
+.body {
+  font-size: 15px;
+  color: var(--ferdi-slate, #6B7B8D);
+  line-height: 1.85;
+  margin-top: 24px;
+  max-width: 580px;
+}
+
+/* ═══ PAIN POINTS ═══ */
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.point {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pointMark {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ferdi-navy, #0D3E7A);
+  opacity: 0.35;
+}
+
+.pointText {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ferdi-midnight, #061E44);
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+/* ═══ DIVIDER ═══ */
+.divider {
+  max-width: 720px;
+  margin: clamp(60px, 8vh, 100px) auto 0;
+  padding: 0 var(--gutter, clamp(1rem, 4vw, 2rem));
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--ferdi-mist, #E8EDF2) 30%, var(--ferdi-mist, #E8EDF2) 70%, transparent 100%);
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+  .section { padding: 60px 0; }
+  .headline { font-size: 1.3rem; }
+  .body { font-size: 14px; margin-top: 18px; }
+  .points { margin-top: 28px; gap: 12px; }
+  .pointText { font-size: 14px; }
+  .divider { margin-top: 48px; }
+}

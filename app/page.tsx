@@ -1,4 +1,5 @@
 import ProblemSection from '@/components/sections/ProblemSection'
+import PainSection from '@/components/sections/PainSection'
 import Hero from '@/src/components/landing/Hero'
 import GlassCarousel from '@/src/components/landing/GlassCarousel'
 
@@ -11,6 +12,7 @@ export default function HomePage() {
           <GlassCarousel />
         </div>
         <ProblemSection />
+        <PainSection />
       </main>
     </div>
   )
