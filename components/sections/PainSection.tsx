@@ -4,8 +4,8 @@ import PainMesh from './PainMesh'
 export default function PainSection() {
   return (
     <section id="pain" className={styles.section}>
+      <PainMesh />
       <div className={styles.stage}>
-        <PainMesh />
         <div className={styles.inner}>
           <h2 className={styles.headline}>
             העומס לא נובע רק מכמות העבודה.
@@ -37,7 +37,6 @@ export default function PainSection() {
           </div>
         </div>
       </div>
-
       <div className={styles.divider} />
     </section>
   )
