@@ -4,8 +4,6 @@
   position: relative;
   background: var(--ferdi-white, #EEF3F8);
   padding: clamp(80px, 12vh, 140px) 0;
-  direction: rtl;
-  text-align: right;
   overflow: hidden;
 }
 
@@ -15,23 +13,26 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--gutter, clamp(1rem, 4vw, 2rem));
+  padding: 0 clamp(1rem, 3vw, 2rem) 0 0;
   position: relative;
-  min-height: 420px;
+  min-height: 450px;
 }
 
 .inner {
-  max-width: 480px;
+  max-width: 420px;
   position: relative;
   z-index: 2;
+  padding-right: clamp(1rem, 4vw, 3rem);
+  direction: rtl;
+  text-align: right;
 }
 
 .inner::before {
   content: '';
   position: absolute;
-  inset: -50px -70px -40px -100px;
+  inset: -50px -40px -40px -120px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(238,243,248,0.92) 0%, rgba(238,243,248,0.7) 40%, transparent 70%);
+  background: radial-gradient(ellipse at 70% 50%, rgba(238,243,248,0.94) 0%, rgba(238,243,248,0.75) 40%, transparent 70%);
   z-index: -1;
   pointer-events: none;
 }
@@ -137,8 +138,8 @@
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
   .section { padding: 60px 0; }
-  .stage { justify-content: stretch; }
-  .inner { max-width: 100%; width: 100%; }
+  .stage { justify-content: stretch; padding: 0 16px; }
+  .inner { max-width: 100%; width: 100%; padding-right: 0; }
   .headline { font-size: 1.3rem; }
   .body { font-size: 14px; margin-top: 18px; }
   .points { margin-top: 28px; gap: 12px; }
