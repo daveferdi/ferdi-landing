@@ -1,4 +1,4 @@
-/* Pain Section — operational tension, premium and restrained */
+/* Pain Section — cage + dark substrate + glass panel */
 
 .section {
   position: relative;
@@ -7,123 +7,137 @@
   overflow: hidden;
 }
 
+/* ═══ STAGE ═══ */
 .stage {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  direction: ltr;
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 3vw, 2rem) 0 0;
-  position: relative;
-  min-height: 450px;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  min-height: 520px;
+  display: flex;
+  align-items: center;
 }
 
-.inner {
-  max-width: 420px;
+/* ═══ DARK SUBSTRATE — the "ground" for glass to frost against ═══ */
+.substrate {
+  position: absolute;
+  inset: 12px;
+  z-index: 0;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse 70% 60% at 35% 50%, rgba(6, 30, 68, 0.75) 0%, rgba(6, 30, 68, 0.55) 50%, rgba(14, 27, 50, 0.4) 100%),
+    linear-gradient(135deg, #0a1628 0%, #0e1f3a 40%, #132a4a 100%);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 20px 60px rgba(6, 20, 40, 0.2),
+    inset 0 1px 0 rgba(126, 200, 238, 0.04);
+}
+
+/* ═══ CAGE — sits on the substrate, extends under glass ═══ */
+.cageWrap {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80%;
+  aspect-ratio: 700 / 550;
+  z-index: 1;
+}
+
+/* ═══ GLASS PANEL — frosts the dark substrate + cage lines ═══ */
+.glassPanel {
   position: relative;
   z-index: 2;
-  padding-right: clamp(1rem, 4vw, 3rem);
+  margin-left: auto;
+  width: 40%;
+  padding: 44px 36px;
+  border-radius: 18px;
+
+  /* Glass on dark — now the blur actually works */
+  background: rgba(10, 22, 42, 0.45);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(126, 200, 238, 0.08);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ═══ BRAND MARK ═══ */
+.glassBrand {
+  display: block;
+  direction: ltr;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ferdi-ice, #B5E2F8);
+  opacity: 0.35;
+  margin-bottom: 36px;
+}
+
+/* ═══ GLASS CONTENT ═══ */
+.glassCopy {
   direction: rtl;
   text-align: right;
 }
 
-.inner::before {
-  content: '';
-  position: absolute;
-  inset: -50px -40px -40px -120px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at 70% 50%, rgba(238,243,248,0.94) 0%, rgba(238,243,248,0.75) 40%, transparent 70%);
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* ═══ PAIN MESH — full-width tension field ═══ */
-.painMeshWrap {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.painMeshCanvas {
-  position: absolute;
-  inset: 0;
-}
-
-.painMeshFadeT {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 8%;
-  background: linear-gradient(180deg, var(--ferdi-white, #EEF3F8) 0%, transparent 100%);
-  z-index: 1;
-}
-
-.painMeshFadeB {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 8%;
-  background: linear-gradient(0deg, var(--ferdi-white, #EEF3F8) 0%, transparent 100%);
-  z-index: 1;
-}
-
-/* ═══ HEADLINE ═══ */
+/* ═══ HEADLINE — light text on dark glass ═══ */
 .headline {
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
   font-weight: 700;
-  color: var(--ferdi-midnight, #061E44);
-  line-height: 1.35;
+  color: var(--ferdi-white, #EEF3F8);
+  line-height: 1.4;
   letter-spacing: -0.02em;
   margin: 0;
 }
 
 .headlineSub {
-  color: var(--ferdi-slate, #6B7B8D);
+  color: var(--ferdi-breeze, #7EC8EE);
   font-weight: 500;
+  opacity: 0.8;
 }
 
 /* ═══ BODY ═══ */
 .body {
-  font-size: 15px;
-  color: var(--ferdi-slate, #6B7B8D);
+  font-size: 14px;
+  color: var(--ferdi-ice, #B5E2F8);
   line-height: 1.85;
-  margin-top: 24px;
-  max-width: 580px;
+  margin-top: 20px;
+  opacity: 0.75;
 }
 
 /* ═══ PAIN POINTS ═══ */
 .points {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 40px;
+  gap: 14px;
+  margin-top: 32px;
 }
 
 .point {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .pointMark {
   flex-shrink: 0;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: var(--ferdi-navy, #0D3E7A);
-  opacity: 0.35;
+  background: var(--ferdi-breeze, #7EC8EE);
+  opacity: 0.4;
 }
 
 .pointText {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  color: var(--ferdi-midnight, #061E44);
+  color: var(--ferdi-ice, #B5E2F8);
   line-height: 1.5;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 /* ═══ DIVIDER ═══ */
@@ -135,15 +149,56 @@
   background: linear-gradient(90deg, transparent 0%, var(--ferdi-mist, #E8EDF2) 30%, var(--ferdi-mist, #E8EDF2) 70%, transparent 100%);
 }
 
-/* ═══ RESPONSIVE ═══ */
+/* ═══ RESPONSIVE — TABLET ═══ */
+@media (max-width: 1024px) {
+  .cageWrap { width: 70%; }
+  .glassPanel {
+    width: 48%;
+    padding: 36px 28px;
+  }
+}
+
+/* ═══ RESPONSIVE — MOBILE ═══ */
 @media (max-width: 768px) {
   .section { padding: 60px 0; }
-  .stage { justify-content: stretch; padding: 0 16px; }
-  .inner { max-width: 100%; width: 100%; padding-right: 0; }
-  .headline { font-size: 1.3rem; }
-  .body { font-size: 14px; margin-top: 18px; }
-  .points { margin-top: 28px; gap: 12px; }
-  .pointText { font-size: 14px; }
+
+  .stage {
+    flex-direction: column;
+    gap: 0;
+    padding: 0 16px;
+  }
+
+  .substrate {
+    inset: 8px;
+    border-radius: 18px;
+  }
+
+  .cageWrap {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-height: 240px;
+    order: 1;
+  }
+
+  .glassPanel {
+    order: 2;
+    width: 100%;
+    margin-left: 0;
+    padding: 28px 20px;
+    border-radius: 0 0 14px 14px;
+  }
+
+  .glassBrand {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+
+  .headline { font-size: 1.25rem; }
+  .body { font-size: 13px; margin-top: 16px; }
+  .points { margin-top: 24px; gap: 10px; }
+  .pointText { font-size: 13px; }
   .divider { margin-top: 48px; }
-  .painMeshWrap { opacity: 0.3; width: 100%; }
 }
